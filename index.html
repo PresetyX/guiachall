@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análise Challenger - Guia Definitivo</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --cor-fundo: #111827;
+            --cor-card: #1f2937;
+            --cor-borda: #4f46e5;
+            --cor-texto-principal: #f9fafb;
+            --cor-texto-secundario: #9ca3af;
+            --cor-titulo: #818cf8;
+            --cor-dica: #15803d; /* Verde para a dica de ouro */
+            --cor-erro: #be123c; /* Vermelho para a caixa de erro */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--cor-fundo);
+            color: var(--cor-texto-principal);
+            line-height: 1.7;
+        }
+
+        header {
+            background-color: var(--cor-card);
+            padding: 1.5rem 1rem;
+            text-align: center;
+            border-bottom: 2px solid var(--cor-borda);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        header h1 {
+            color: var(--cor-texto-principal);
+            font-size: 2rem;
+        }
+
+        nav {
+            margin-top: 1rem;
+        }
+
+        nav a {
+            color: var(--cor-texto-secundario);
+            text-decoration: none;
+            margin: 0 0.75rem;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--cor-borda);
+        }
+
+        main {
+            padding: 1rem;
+            max-width: 900px;
+            margin: 2rem auto;
+        }
+
+        .secao {
+            background-color: var(--cor-card);
+            margin-bottom: 2rem;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            border-left: 5px solid var(--cor-borda);
+        }
+        
+        .secao h2 {
+            font-size: 2rem;
+            color: var(--cor-titulo);
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid #374151;
+            padding-bottom: 0.5rem;
+        }
+
+        .secao h3 {
+            font-size: 1.5rem;
+            color: var(--cor-texto-principal);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .secao h4 {
+            font-size: 1.2rem;
+            color: var(--cor-titulo);
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .secao p, .secao li {
+            color: var(--cor-texto-secundario);
+            margin-bottom: 1rem;
+        }
+        
+        .secao ul {
+            list-style-position: inside;
+            padding-left: 1rem;
+        }
+
+        .secao strong {
+            color: var(--cor-texto-principal);
+            font-weight: 600;
+        }
+
+        .map-container {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .map-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            background-color: #374151;
+            margin-bottom: 1rem;
+        }
+
+        .map-legend {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 1rem;
+            background-color: rgba(0,0,0,0.2);
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .legend-circle {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            border: 2px solid var(--cor-texto-principal);
+        }
+        
+        .circle-green { background-color: #22c55e; }
+        .circle-yellow { background-color: #eab308; }
+        .circle-red { background-color: #ef4444; }
+
+        .dica-ouro {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background-color: rgba(21, 128, 61, 0.1);
+            border-left: 5px solid var(--cor-dica);
+            border-radius: 8px;
+        }
+        
+        .dica-ouro h3 {
+            color: #4ade80;
+            margin-top: 0;
+        }
+        
+        /* Estilo para a caixa de ERRO no Recall */
+        .recall-erro {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background-color: rgba(190, 18, 60, 0.1);
+            border-left: 5px solid var(--cor-erro);
+            border-radius: 8px;
+        }
+
+        .recall-erro h3 {
+            color: #f472b6; /* Rosa claro */
+            margin-top: 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1.5rem;
+        }
+
+        th, td {
+            padding: 0.8rem;
+            text-align: left;
+            border-bottom: 1px solid #374151;
+        }
+
+        th {
+            background-color: var(--cor-borda);
+        }
+
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            color: var(--cor-texto-secundario);
+            font-size: 0.9rem;
+            border-top: 1px solid #374151;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Análise Challenger - Guia Definitivo</h1>
+        <nav>
+            <a href="#visao-geral">Análise Geral</a>
+            <a href="#wards-farm">Wards & Farm</a>
+            <a href="#recall">A Arte do Recall</a>
+            <a href="#pilares-laners">Plano (Laners)</a>
+            <a href="#pilares-jungle">Plano (Jungle)</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="visao-geral" class="secao">
+            <h2>Análise Comparativa: Challenger vs. Elo Baixo</h2>
+            
+            <h3>Mentalidade e Disciplina</h3>
+            <p><strong>Challenger Coreano:</strong> Pra eles, a SoloQ é treino sério. O foco é absurdo, mesmo perdendo. Eles analisam os próprios erros, não os dos outros. Consistência é a chave.</p>
+            <p><strong>Nós:</strong> Muitas vezes, a mentalidade é de "tilt". Culpamos o time, desistimos fácil e não focamos em como virar o jogo a partir dos nossos próprios erros.</p>
+
+            <h3>Micro Game (Habilidade Mecânica)</h3>
+            <p><strong>Challenger Coreano:</strong> Movimentação fluida, last hit perfeito. Sabem exatamente o dano que dão e recebem, trocando vida de forma calculada para punir cada erro do inimigo.</p>
+            <p><strong>Nós:</strong> Movimentação mais robótica. As trocas são no "feeling", sem calcular dano de minions, cooldowns ou a posição do jungler inimigo. Uma pequena vantagem do inimigo vira uma bola de neve.</p>
+
+            <h3>Macro Game (A Maior Diferença)</h3>
+            <p><strong>Challenger Coreano:</strong> Vivem no minimapa. Sabem o tempo de renascimento de tudo (buffs, dragão, feitiços). As decisões são rápidas e corretas, sempre focadas no próximo objetivo.</p>
+            <p><strong>Nós:</strong> Visão de túnel, focada só na própria lane. O jogo é reativo ("Ah, fizeram dragão"), e as decisões são lentas. Depois de uma luta, a primeira reação é voltar base, mesmo quando dá pra levar um objetivo.</p>
+        </section>
+
+        <section id="wards-farm" class="secao">
+            <h2>Guia Essencial: Wards & Farm</h2>
+            <h3>Estratégia de Visão</h3>
+            <p><strong>Regra de Ouro:</strong> Aos 10 min ou lvl 9, todas as lanes compram <strong>Ward Vermelha (Pink)</strong>, exceto o ADC, que pode optar pela Lente ou Ward Azul.</p>
+            <div class="map-container">
+                <img src="https://cdn.discordapp.com/attachments/1030905717697298432/1412837763987931307/96223821-fd1b-42d9-882d-5d930f64b421.jpg?ex=68b9bf34&is=68b86db4&hm=a77edc16820a806911767416e9e9c4e7e0c214c47b21daa25434f9737071b792&" alt="Mapa de Summoner's Rift com posições de wards">
+                <div class="map-legend">
+                    <div class="legend-item"><span class="legend-circle circle-green"></span><span>Wards do JG</span></div>
+                    <div class="legend-item"><span class="legend-circle circle-yellow"></span><span>Wards Amarelas</span></div>
+                    <div class="legend-item"><span class="legend-circle circle-red"></span><span>Pinks</span></div>
+                </div>
+            </div>
+            <h3>Metas de Farm (com margem de erro de ~20)</h3>
+            <table>
+                <thead><tr><th>Tempo de Jogo</th><th>Top / Mid</th><th>ADC</th></tr></thead>
+                <tbody>
+                    <tr><td>5 min</td><td>38 - 44</td><td>38 - 44</td></tr>
+                    <tr><td>10 min</td><td>90 - 100</td><td>85 - 95</td></tr>
+                    <tr><td>15 min</td><td>140 - 155</td><td>130 - 145</td></tr>
+                    <tr><td>20 min</td><td>190 - 210</td><td>180 - 200</td></tr>
+                    <tr><td>25 min</td><td>240 - 260</td><td>230 - 255</td></tr>
+                </tbody>
+            </table>
+            <p style="margin-top: 1rem;"><strong>Nota do Jungle:</strong> A meta é ter um farm que acompanhe de perto o do seu mid laner.</p>
+        </section>
+        
+        <section id="recall" class="secao">
+            <h2>A Arte do Recall: Quando Voltar para a Base</h2>
+            <p>Saber quando voltar para a base é tão importante quanto saber farmar. Um bom recall te dá vantagem de item e tempo. Um recall ruim entrega a sua lane de bandeja para o inimigo.</p>
+
+            <h3>Cenário 1: O "Timing Perfeito" (Crashando a Wave)</h3>
+            <p>Essa é a regra mais importante de todas. O melhor momento para dar recall é <strong>imediatamente após você empurrar uma grande onda de minions para debaixo da torre inimiga</strong>.</p>
+            <ul>
+                <li><strong>Como fazer:</strong> Use suas habilidades para limpar os minions inimigos rapidamente (o que chamam de "shovar" ou "crashar" a wave). Assim que a sua wave bater na torre dele, dê recall.</li>
+                <li><strong>Por que funciona:</strong> A torre inimiga vai matar seus minions, fazendo com que o inimigo perca ouro e experiência. Enquanto ele limpa, a próxima wave dele vai começar a empurrar de volta para o seu lado. Quando você voltar para a lane, a wave estará em uma posição segura e favorável para você, sem que você tenha perdido quase nada.</li>
+            </ul>
+
+            <h3>Cenário 2: Preparando Objetivos (Dragão/Arauto)</h3>
+            <p>Nunca chegue em um objetivo com vida baixa ou sem itens. O ideal é se preparar <strong>antes</strong>.</p>
+            <ul>
+                <li><strong>Como fazer:</strong> Olhe o timer do objetivo. Cerca de <strong>45 a 60 segundos antes</strong> do Dragão ou Arauto nascer, siga o "Timing Perfeito" do Cenário 1: crashe a wave na sua lane e dê recall.</li>
+                <li><strong>Por que funciona:</strong> Você voltará para o mapa com vida/mana cheios e, idealmente, com um item novo, pronto para a luta. Seu adversário de lane terá que escolher entre perder a wave gigante na torre dele ou chegar atrasado (e mais fraco) na luta pelo objetivo.</li>
+            </ul>
+
+            <h3>Cenário 3: Após um Abate ou Gank</h3>
+            <p>Se você acabou de conseguir um abate no seu oponente ou forçou ele a ir para a base, você tem uma janela de oportunidade de ouro.</p>
+            <ul>
+                <li><strong>Como fazer:</strong> Não dê recall imediatamente! Primeiro, empurre a sua wave o mais rápido possível para debaixo da torre inimiga. Depois, volte para a base.</li>
+                <li><strong>Por que funciona:</strong> Isso maximiza o prejuízo do inimigo. Além de morrer, ele vai perder toda aquela wave para a torre. Você nega ouro e experiência, aumentando sua vantagem.</li>
+            </ul>
+
+            <div class="recall-erro">
+                <h3>Quando NUNCA dar Recall (Erros Comuns)</h3>
+                <ul>
+                    <li><strong>Com a wave parada perto da torre inimiga (congelada):</strong> Se você sair, o inimigo pode simplesmente farmar em segurança e a sua wave não vai morrer para a torre. Você perde tudo.</li>
+                    <li><strong>Com a wave inimiga grande vindo na sua direção:</strong> Se você der recall agora, todos esses minions morrerão para a sua torre e você perderá uma quantidade enorme de ouro e experiência. É melhor ficar com vida baixa e pegar o XP do que dar tudo de graça.</li>
+                    <li><strong>Exatamente quando o objetivo nasceu:</strong> Se você não se preparou antes, já é tarde demais. Ir base agora significa que seu time lutará com um a menos.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="pilares-laners" class="secao">
+            <h2>Plano de Ação: 3 Pilares (Laners)</h2>
+            <h3>Pilar 1: Mente Blindada</h3>
+            <h4>Passo 1: Adote o /mute all</h4>
+            <p><strong>Como fazer:</strong> No começo de TODA partida, digite `/mute all` ou `/muteself`. Comunique-se com pings inteligentes.</p>
+            <h4>Passo 2: Crie Mini-Missões Pessoais</h4>
+            <p><strong>Como fazer:</strong> Sua meta não é só ganhar. É "morrer no máximo 2x nos 15 min" ou "ter 7 de farm/min". Cumpriu a meta? Você melhorou, mesmo na derrota.</p>
+            <h3>Pilar 2: Mecânica Afiada</h3>
+            <h4>Passo 1: O Desafio do Last Hit</h4>
+            <p><strong>Como fazer:</strong> Modo Treino, sem itens ou skills. Tente farmar o máximo possível em 10 min só com auto-ataque. Meta: perto de 90.</p>
+            <h3>Pilar 3: Macro Inteligente</h3>
+            <h4>Passo 1: O Jogo do "Cadê o Jungler?"</h4>
+            <p><strong>Como fazer:</strong> A cada 5-10 segundos, olhe para o minimapa. Tem que virar um tique nervoso. Sempre se pergunte onde o jungler inimigo pode estar.</p>
+            <div class="dica-ouro">
+                <h3>A Dica de Ouro que Junta Tudo</h3>
+                <p><strong>Não tente fazer tudo isso de uma vez!</strong> Escolha UMA ÚNICA COISA para focar por uma semana. Ex: "Essa semana, minha única meta é olhar o minimapa a cada 10 segundos."</p>
+            </div>
+        </section>
+
+        <section id="pilares-jungle" class="secao">
+            <h2>Plano de Ação: 3 Pilares (Jungle)</h2>
+            <h3>Pilar 1: Blindando a Mente</h3>
+            <p>Se para o laner o mute é dica, pra você é REGRA. Suas metas são de impacto, não de kill (ex: forçar Flash, garantir Aronguejo).</p>
+            <h3>Pilar 2: Mecânica da Selva</h3>
+            <p>Sua mecânica é limpar a jungle rápido e com vida cheia. Treine seu "clear" no Modo Treino. Domine as rotas de gank e saiba o dano exato do seu Smite.</p>
+            <h3>Pilar 3: O Macro é 100% do seu Trabalho</h3>
+            <p>Sempre tente prever onde o jungler inimigo está. Jogue para a sua "condição de vitória" (a lane que tem mais potencial de carregar). E o mais importante: pense em "trocas no mapa". O inimigo gankou top? Vá direto para o Dragão ou gank no bot.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>Análise feita por você, para você. Foco na melhoria contínua!</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
